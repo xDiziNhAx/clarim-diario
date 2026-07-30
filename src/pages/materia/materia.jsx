@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { buscarNoticia } from '../../services/noticias'
-import './Materia.css'
+import './materia.css'
 
-function Materia() {
+function materia() {
   const { id } = useParams()
 
   const [noticia, setNoticia] = useState(null)
@@ -56,4 +56,4 @@ function Materia() {
   )
 }
 
-export default Materia
+export default materia

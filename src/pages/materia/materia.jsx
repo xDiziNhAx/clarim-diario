@@ -1,11 +1,5 @@
-import { useState, useEffect } from 'react'
-import { useParams, Link } from 'react-router-dom'
-import { buscarNoticia } from '../../services/noticias'
-import './materia.css'
-
-function materia() {
+function Materia() {
   const { id } = useParams()
-
   const [noticia, setNoticia] = useState(null)
   const [carregando, setCarregando] = useState(true)
   const [erro, setErro] = useState('')
@@ -14,7 +8,7 @@ function materia() {
     async function carregar() {
       try {
         setCarregando(true)
-        setErro('')                       
+        setErro('')
         const dados = await buscarNoticia(id)
         setNoticia(dados)
       } catch {
@@ -24,7 +18,7 @@ function materia() {
       }
     }
     carregar()
-  }, [id])   
+  }, [id])
 
   if (carregando) {
     return <p className="aviso-tela">Carregando a matéria…</p>
@@ -44,11 +38,9 @@ function materia() {
   return (
     <main className="container materia">
       <Link to="/" className="materia__voltar">← Voltar à capa</Link>
-
       <span className="materia__categoria">{noticia.categoria}</span>
       <h1>{noticia.titulo}</h1>
       <p className="materia__resumo">{noticia.resumo}</p>
-
       <div className="materia__texto">
         <p>{noticia.texto}</p>
       </div>
@@ -56,4 +48,4 @@ function materia() {
   )
 }
 
-export default materia
+export default Materia
